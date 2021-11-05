@@ -1,0 +1,26 @@
+{
+  "name": "incheon_bus_stations_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dongmin3891/incheon_bus_stations_server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dongmin3891/incheon_bus_stations_server/issues"
+  },
+  "homepage": "https://github.com/dongmin3891/incheon_bus_stations_server#readme"
+}
