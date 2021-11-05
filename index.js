@@ -9,11 +9,11 @@ app.listen(port, function() {
   console.log(`Server app listening at http://localhost:${port}`);
 })
 
-const busApiUrl = "http://apis.data.go.kr/6280000/busLocationService/getBusRouteLocation?"
-const serviceKey = "L%2F1NA9bpn1I%2FXr0C2YPtJGNnZXPyrz3O7o3Hvn8ALqFO9DA40GocvMWlaoq6ofkUhaUTcoGKXmTLhkmTz3bVuA%3D%3D&"
-const numOfRows = "2&"
-const pageNo = "1&"
-const routeId = "165000196"
+const busApiUrl = "http://apis.data.go.kr/6410000/buslocationservice/getBusLocationList"
+const serviceKey = "L%2F1NA9bpn1I%2FXr0C2YPtJGNnZXPyrz3O7o3Hvn8ALqFO9DA40GocvMWlaoq6ofkUhaUTcoGKXmTLhkmTz3bVuA%3D%3D"
+//const numOfRows = "2&"
+//const pageNo = "1&"
+const routeId = "232000089"
 
 app.get("/api/test", (req, res) => {
   console.log("======[GET] test ======");
@@ -40,7 +40,7 @@ app.get("/api/busData", (req, res) => {
   
   request.get(
     {
-      uri: `${busApiUrl}serviceKey=${serviceKey}numOfRows=${numOfRows}pageNo=${pageNo}routeid=${routeId}`,
+      uri: `${busApiUrl}?serviceKey=${serviceKey}&routeId=${routeId}`,
     },
     function (error, response, body) {
       console.log("body", body);
