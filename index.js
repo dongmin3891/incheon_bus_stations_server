@@ -10,10 +10,14 @@ app.listen(port, function() {
 })
 
 
-const busApiUrl = "http://apis.data.go.kr/6410000/buslocationservice/getBusLocationList"
-const bustRouteApiUrl = "http://apis.data.go.kr/6410000/busrouteservice/getBusRouteStationList"
+const busApiUrl = "http://apis.data.go.kr/6410000/buslocationservice/getBusLocationList" //버스위치정보
+const bustRouteApiUrl = "http://apis.data.go.kr/6410000/busrouteservice/getBusRouteStationList" //버스노선정보
+const busArrivalApiUrl = "http://apis.data.go.kr/6410000/busarrivalservice/getBusArrivalItem"
 const serviceKey = "L%2F1NA9bpn1I%2FXr0C2YPtJGNnZXPyrz3O7o3Hvn8ALqFO9DA40GocvMWlaoq6ofkUhaUTcoGKXmTLhkmTz3bVuA%3D%3D"
-const routeId = "232000089"
+const routeId = "232000089" // 김포 90-1번
+const stationId = "168000413" //마전역
+
+// http://apis.data.go.kr/6410000/busarrivalservice/getBusArrivalItem?serviceKey=인증키(URL Encode)&stationId=200000177&routeId=200000037&staOrder=19
 
 app.get("/api/test", (req, res) => {
   console.log("======[GET] test ======");
@@ -70,3 +74,20 @@ app.get("/api/busRoute", (req, res) => {
 });
 
 
+//버스도착정보조회
+app.get("/api/busArrival", (req, res) => {
+  console.log("======[GET] busArrival =======");
+  res.setHeader("Content-Type", "application/json");
+  res.statusCode = 200;
+
+  request.get(
+    {
+      uri : `${busArrivalApiUrl}?serviceKey=${serviceKey}&stationId=${stationId}&routeId=${routeId}`,
+    },
+  
+    function (error, response, body) {
+      console.log("error", error)
+      res.send(converter.xml2json(body));
+    }
+  )
+});
