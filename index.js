@@ -91,3 +91,32 @@ app.get("/api/busArrival", (req, res) => {
     }
   )
 });
+
+app.get("*", function (req, res) {
+  var file = path.join(dir, req.path.replace(/\/$/, "/index.html"));
+  console.log("file: " + file);
+  if (file.indexOf(dir + path.sep) !== 0) {
+      return res
+          .status(403)
+          .end("Forbidden");
+  }
+  var type = mime[
+      path
+          .extname(file)
+          .slice(1)
+          .toLowerCase()
+  ] || "text/plain";
+  console.log("type: " + type);
+
+  var s = fs.createReadStream(file);
+  s.on("open", function () {
+      res.set("Content-Type", type);
+      s.pipe(res);
+  });
+  s.on("error", function () {
+      res.set("Content-Type", "text/plain");
+      res
+          .status(404)
+          .end("Not found");
+  });
+})
