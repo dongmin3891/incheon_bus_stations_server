@@ -3,7 +3,7 @@ const express = require('express');
 const converter = require('xml-js')
 //Express 객체를 생성한다.
 const app = express();
-const port = (process.env.PORT || 3002)
+const port = process.env.PORT
 const request = require('request');
 app.listen(port, function() {
   console.log(`Server app listening at http://localhost:${port}`);
