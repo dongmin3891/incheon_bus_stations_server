@@ -3,12 +3,14 @@ const express = require('express');
 const converter = require('xml-js')
 //Express 객체를 생성한다.
 const app = express();
-const port = process.env.PORT
+const https = require('https');
+const port = (process.env.PORT || 443)
 const request = require('request');
 app.listen(port, function() {
   console.log(`Server app listening at http://localhost:${port}`);
 })
 
+// https.createServer(options, app).listen(PORT);
 
 const busApiUrl = "http://apis.data.go.kr/6410000/buslocationservice/getBusLocationList" //버스위치정보
 const bustRouteApiUrl = "http://apis.data.go.kr/6410000/busrouteservice/getBusRouteStationList" //버스노선정보
@@ -18,6 +20,8 @@ const routeId = "232000089" // 김포 90-1번
 const stationId = "168000413" //마전역
 
 // http://apis.data.go.kr/6410000/busarrivalservice/getBusArrivalItem?serviceKey=인증키(URL Encode)&stationId=200000177&routeId=200000037&staOrder=19
+
+app.set('port', port);
 
 app.get("/api/test", (req, res) => {
   console.log("======[GET] test ======");
