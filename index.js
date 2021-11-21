@@ -10,7 +10,7 @@ app.listen(port, function() {
   console.log(`Server app listening at http://localhost:${port}`);
 })
 
-https.createServer(options, app).listen(PORT);
+//https.createServer(options, app).listen(PORT);
 
 const busApiUrl = "http://apis.data.go.kr/6410000/buslocationservice/getBusLocationList" //버스위치정보
 const bustRouteApiUrl = "http://apis.data.go.kr/6410000/busrouteservice/getBusRouteStationList" //버스노선정보
