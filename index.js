@@ -39,62 +39,62 @@ app.get("/api/test", (req, res) => {
   res.send(JSON.stringify(data));
 })
 
-//버스위치정보
-app.get("/api/busData", (req, res) => {
-  console.log("======[GET] busData ======");
-  res.setHeader("Content-Type", "application/json");
-  // res.setHeader("Access-Control-Allow-Origin", "*");
-  // res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
-  res.statusCode = 200;
+// //버스위치정보
+// app.get("/api/busData", (req, res) => {
+//   console.log("======[GET] busData ======");
+//   res.setHeader("Content-Type", "application/json");
+//   // res.setHeader("Access-Control-Allow-Origin", "*");
+//   // res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+//   res.statusCode = 200;
   
-  request.get(
-    {
-      uri: `${busApiUrl}?serviceKey=${serviceKey}&routeId=${routeId}`,
-    },
-    function (error, response, body) {
-      console.log("body", body);
-      console.log("error", error);
-      res.send(converter.xml2json(body));
-    }
-  )
-})
+//   request.get(
+//     {
+//       uri: `${busApiUrl}?serviceKey=${serviceKey}&routeId=${routeId}`,
+//     },
+//     function (error, response, body) {
+//       console.log("body", body);
+//       console.log("error", error);
+//       res.send(converter.xml2json(body));
+//     }
+//   )
+// })
 
-//버스노선
-app.get("/api/busRoute", (req, res) => {
-  console.log("======[GET] busRoute =======");
-  res.setHeader("Content-Type", "application/json");
-  res.statusCode = 200;
+// //버스노선
+// app.get("/api/busRoute", (req, res) => {
+//   console.log("======[GET] busRoute =======");
+//   res.setHeader("Content-Type", "application/json");
+//   res.statusCode = 200;
 
-  request.get(
-    {
-      uri : `${bustRouteApiUrl}?serviceKey=${serviceKey}&routeId=${routeId}`,
-    },
+//   request.get(
+//     {
+//       uri : `${bustRouteApiUrl}?serviceKey=${serviceKey}&routeId=${routeId}`,
+//     },
   
-    function (error, response, body) {
-      console.log("error", error)
-      res.send(converter.xml2json(body));
-    }
-  )
-});
+//     function (error, response, body) {
+//       console.log("error", error)
+//       res.send(converter.xml2json(body));
+//     }
+//   )
+// });
 
 
-//버스도착정보조회
-app.get("/api/busArrival", (req, res) => {
-  console.log("======[GET] busArrival =======");
-  res.setHeader("Content-Type", "application/json");
-  res.statusCode = 200;
+// //버스도착정보조회
+// app.get("/api/busArrival", (req, res) => {
+//   console.log("======[GET] busArrival =======");
+//   res.setHeader("Content-Type", "application/json");
+//   res.statusCode = 200;
 
-  request.get(
-    {
-      uri : `${busArrivalApiUrl}?serviceKey=${serviceKey}&stationId=${stationId}&routeId=${routeId}`,
-    },
+//   request.get(
+//     {
+//       uri : `${busArrivalApiUrl}?serviceKey=${serviceKey}&stationId=${stationId}&routeId=${routeId}`,
+//     },
   
-    function (error, response, body) {
-      console.log("error", error)
-      res.send(converter.xml2json(body));
-    }
-  )
-});
+//     function (error, response, body) {
+//       console.log("error", error)
+//       res.send(converter.xml2json(body));
+//     }
+//   )
+// });
 
 // app.get("*", function (req, res) {
 //   var file = path.join(dir, req.path.replace(/\/$/, "/index.html"));
